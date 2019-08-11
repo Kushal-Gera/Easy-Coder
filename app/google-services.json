@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "258486528721",
+    "firebase_url": "https://easy-coder.firebaseio.com",
+    "project_id": "easy-coder",
+    "storage_bucket": "easy-coder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258486528721:android:57bde1bf9a6ac92a",
+        "android_client_info": {
+          "package_name": "com.example.easycoder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258486528721-nokmmvtscl6ifd9kbo5olsmhdm311jqk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easycoder",
+            "certificate_hash": "1ebd1b1ebc60dd0193d75ff904e92ee49592e2e5"
+          }
+        },
+        {
+          "client_id": "258486528721-c16h1amdcd419e0k7nijg1h1n3p1q5pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD2EiSr9toP9_qp4M2qXzpG9xVM2wEIvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258486528721-c16h1amdcd419e0k7nijg1h1n3p1q5pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

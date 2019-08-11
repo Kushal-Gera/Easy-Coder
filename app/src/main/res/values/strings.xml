@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Easy Coder</string>
+    <string name="password">Enter Password Here</string>
+    <string name="email">Enter Email Here</string>
+    <string name="login">login</string>
+    <string name="sign_up">sign up</string>
+    <string name="forgot_password">FORGOT PASSWORD ?</string>
+    <string name="free_goodies">Get Your Free Goodies Below !!!</string>
+    <string name="log_out">Log Out</string>
+</resources>
