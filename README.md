@@ -1,5 +1,5 @@
 # Easy-Coder
-Currently in working phase
+Currently not in working phase
 
 it is a free E-book app to download coding books
 
