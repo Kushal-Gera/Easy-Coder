@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 //        call this to add new books to the lot :
-//        generateData(10);
+//        generateData(15);
 
         options = new FirebaseRecyclerOptions.Builder<pdf_model>()
                 .setQuery(ref, pdf_model.class).build();
@@ -174,11 +174,11 @@ public class HomeActivity extends AppCompatActivity {
     private void generateData(final int x){
 
         for (int i = 1; i< x; i++){
-
-            String str = String.format(Locale.ENGLISH, "note%d", i);
+//            locale.english is totally optional for now.....
+            String str = String.format(Locale.ENGLISH, "new_book%d", i);
 
             ref.child(str).child(LINK).setValue("kankckcsnk");
-            ref.child(str).child(NAME).setValue("hahha " + str);
+            ref.child(str).child(NAME).setValue("hahha");
 
         }
 
