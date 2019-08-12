@@ -98,8 +98,8 @@ public class HomeActivity extends AppCompatActivity {
 
                                     //take to download link / or download pdf
                                     String link = dataSnapshot.child(LINK).getValue().toString();
+                                    startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
 
-                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
                                 }
                             });
                             pd.dismiss();
