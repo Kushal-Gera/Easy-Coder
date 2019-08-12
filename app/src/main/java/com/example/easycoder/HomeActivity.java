@@ -95,10 +95,15 @@ public class HomeActivity extends AppCompatActivity {
                             holder.itemView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
                                     //take to download link / or download pdf
                                     String link = dataSnapshot.child(LINK).getValue().toString();
-                                    startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
+                                    try{
+                                        startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                        Log.e(TAG, "onClick: Error" + e.getMessage() );
+                                        Toast.makeText(HomeActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                                    }
 
                                 }
                             });
