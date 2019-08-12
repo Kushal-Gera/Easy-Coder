@@ -125,7 +125,6 @@ public class HomeActivity extends AppCompatActivity {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pdf_list, parent, false);
                 return new pdf_viewholder(view);
-
             }
         };
 
