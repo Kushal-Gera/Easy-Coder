@@ -29,7 +29,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.net.URI;
 import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
@@ -90,24 +89,23 @@ public class HomeActivity extends AppCompatActivity {
                     ref.child(book_ref).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                                holder.name.setText(String.valueOf(dataSnapshot.child(NAME).getValue()));
+                                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        //take to download link / or download pdf
+                                        String link = String.valueOf(dataSnapshot.child(LINK).getValue() );
+                                        try{
+                                            startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                            Log.e(TAG, "onClick: Error" + e.getMessage() );
+                                            Toast.makeText(HomeActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
+                                        }
 
-                            holder.name.setText(dataSnapshot.child(NAME).getValue().toString());
-                            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    //take to download link / or download pdf
-                                    String link = dataSnapshot.child(LINK).getValue().toString();
-                                    try{
-                                        startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
-                                    }catch (Exception e){
-                                        e.printStackTrace();
-                                        Log.e(TAG, "onClick: Error" + e.getMessage() );
-                                        Toast.makeText(HomeActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                                     }
-
-                                }
-                            });
-                            pd.dismiss();
+                                });
+                                pd.dismiss();
 
                         }
                         @Override
