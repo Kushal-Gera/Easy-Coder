@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_bg"
+    android:background="@color/colorPrimaryDark"
     android:keepScreenOn="true"
     tools:context=".HomeActivity">
 
@@ -12,12 +12,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5C6BC0"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/colorBlack">
-    </androidx.appcompat.widget.Toolbar>
+        app:titleTextColor="@color/colorBlack"/>
 
     <TextView
         android:id="@+id/textView"
@@ -26,36 +25,22 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/free_goodies"
-        android:textColor="@color/colorBlack"
-        android:textSize="25sp"
+        android:textColor="#FFF"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingBottom="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/home_bg">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

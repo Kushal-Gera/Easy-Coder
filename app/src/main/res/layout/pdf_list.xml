@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:layout_marginBottom="25dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     android:padding="2dp"
-    app:cardBackgroundColor="#C5CAE9"
+    app:cardBackgroundColor="@color/colorSec"
     app:cardCornerRadius="22dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="40dp"
@@ -35,7 +37,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="18dp"
             android:gravity="start"
-            android:textColor="@color/colorBlack"
+            android:textColor="#FFF"
             android:textSize="25sp"
             tools:text="@string/login" />
 

@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="420dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/main_img" />
+        android:src="@drawable/main_img"
+        android:contentDescription="@string/description" />
 
     <ImageView
         android:id="@+id/logo"
@@ -22,7 +23,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:src="@mipmap/ic_launcher_round" />
+        android:src="@mipmap/ic_launcher_round"
+        android:contentDescription="@string/description" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +57,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
-                    android:src="@drawable/email" />
+                    android:src="@drawable/email"
+                    android:contentDescription="@string/description" />
 
                 <EditText
                     android:id="@+id/email"
@@ -68,8 +71,10 @@
                     android:focusedByDefault="false"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/colorOrange"
-                    android:textSize="20sp" />
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:importantForAutofill="no"
+                    tools:targetApi="o" />
 
             </LinearLayout>
 
@@ -80,6 +85,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:contentDescription="@string/description"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="16dp"
@@ -97,8 +103,10 @@
                     android:focusedByDefault="false"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textColor="@color/colorOrange"
-                    android:textSize="20sp" />
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:targetApi="o"
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/eye"
@@ -107,7 +115,8 @@
                     android:layout_marginStart="-10dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
-                    android:src="@drawable/eye" />
+                    android:src="@drawable/eye"
+                    android:contentDescription="@string/description" />
 
             </LinearLayout>
 
@@ -130,8 +139,9 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/btn2bg"
                 android:text="@string/login"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textColor="#985EFF"
+                android:textSize="16sp"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btn_signup"
@@ -143,8 +153,9 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/btn1bg"
                 android:text="@string/sign_up"
-                android:textColor="#FFF"
-                android:textSize="16sp" />
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 
