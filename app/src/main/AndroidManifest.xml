@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.transparentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

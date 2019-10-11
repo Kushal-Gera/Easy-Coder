@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,6 +41,9 @@ public class HomeActivity extends AppCompatActivity {
     public static final String BOOKS = "books";
     public static final String NAME = "name";
     public static final String LINK = "link";
+    public static final String IS_VIDEO = "is_video";
+
+    public static boolean LIST = false;
 
 //again firebase stuff
     FirebaseAuth auth;
@@ -59,6 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         pd.setMessage("Loading Data...");
         pd.show();
 
+        recyclerView = findViewById(R.id.recyclerView);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference(BOOKS);
@@ -68,17 +75,14 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
         }
 
-        recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStackFromEnd(true);
-        linearLayoutManager.setSmoothScrollbarEnabled(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+
+        recyclerView.setLayoutManager(gridLayoutManager);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 //        call this to add new books to the lot :
-//        generateData(15);
+//        generateData(20);
 
         options = new FirebaseRecyclerOptions.Builder<pdf_model>()
                 .setQuery(ref, pdf_model.class).build();
@@ -93,7 +97,17 @@ public class HomeActivity extends AppCompatActivity {
                     ref.child(book_ref).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                                holder.name.setText(String.valueOf(dataSnapshot.child(NAME).getValue()));
+
+                                if (dataSnapshot.hasChild(IS_VIDEO) &&
+                                        String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("0"))
+                                    holder.img.setImageDrawable(getDrawable(R.drawable.video));
+                                else if (dataSnapshot.hasChild(IS_VIDEO) &&
+                                        String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("1"))
+                                    holder.img.setImageDrawable(getDrawable(R.drawable.assignment));
+                                else
+                                    holder.img.setImageDrawable(getDrawable(R.drawable.book));
+
+                            holder.name.setText(String.valueOf(dataSnapshot.child(NAME).getValue()));
                                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -125,7 +139,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public pdf_viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pdf_list, parent, false);
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.pdf_list, parent, false);
                 return new pdf_viewholder(view);
             }
         };
@@ -146,12 +161,24 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.logout){
-
             //converge all this to a function and include a dialog box
             logout();
+
+        }
+        if (item.getItemId() == R.id.dashboard){
+            if(LIST){
+                item.setIcon(getDrawable(R.drawable.dashboard));
+                StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(gridLayoutManager);
+            }
+            else {
+                item.setIcon(getDrawable(R.drawable.dashboard_plain));
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            }
+            LIST = !LIST;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     private void logout(){
@@ -179,12 +206,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void generateData(final int x){
 
-        for (int i = 1; i< x; i++){
+        for (int i = 51; i< 52; i++){
 //            locale.english is totally optional for now.....
-            String str = String.format(Locale.ENGLISH, "new_book%d", i);
+            String str = String.format(Locale.ENGLISH, "book%d", i);
 
-            ref.child(str).child(LINK).setValue("kankckcsnk");
-            ref.child(str).child(NAME).setValue("hahha");
+            ref.child(str).child(LINK).setValue("jsjsnjssnjsjn");
+            ref.child(str).child("is_video").setValue("1");
+            ref.child(str).child(NAME).setValue("haha");
 
         }
 

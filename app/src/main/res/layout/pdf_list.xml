@@ -4,41 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="10dp"
-    android:orientation="vertical"
+    android:layout_margin="6dp"
     android:padding="2dp"
     app:cardBackgroundColor="@color/colorSec"
-    app:cardCornerRadius="22dp">
+    app:cardCornerRadius="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
+            android:id="@+id/img"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/description"
             android:src="@drawable/book" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="18dp"
             android:gravity="start"
             android:textColor="#FFF"
-            android:textSize="25sp"
+            android:textSize="22sp"
             tools:text="@string/login" />
 
     </LinearLayout>
