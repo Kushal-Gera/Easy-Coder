@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:padding="2dp"
-    app:cardBackgroundColor="@color/colorSec"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
     app:cardCornerRadius="20dp">
 
     <LinearLayout
@@ -34,9 +34,10 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="18dp"
             android:gravity="start"
-            android:textColor="#FFF"
-            android:textSize="22sp"
-            tools:text="@string/login" />
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            tools:text="@string/login"
+            tools:ignore="SpUsage" />
 
     </LinearLayout>
 

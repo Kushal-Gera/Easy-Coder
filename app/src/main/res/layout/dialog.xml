@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
@@ -26,7 +27,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="@string/welcome"
-                android:textColor="@color/white"
+                android:textColor="@color/lightWhite"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -36,7 +37,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -51,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/books_pdf"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lightWhite"
                     android:textSize="22sp" />
 
             </LinearLayout>
@@ -62,7 +64,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -77,8 +80,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Video"
-                    android:textColor="@color/white"
+                    android:text="@string/videos"
+                    android:textColor="@color/lightWhite"
                     android:textSize="22sp" />
 
             </LinearLayout>
@@ -87,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -102,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/assignments"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lightWhite"
                     android:textSize="22sp" />
 
             </LinearLayout>
@@ -116,7 +120,7 @@
                 android:gravity="center"
                 android:text="Free goodies are now available\nPlease Continue"
                 android:textColor="@color/lightWhite"
-                android:textSize="22sp" />
+                android:textSize="22dp" />
 
             <ImageView
                 android:id="@+id/ok"
