@@ -8,4 +8,8 @@
     <string name="free_goodies">Get Your Free Goodies Below !!!</string>
     <string name="log_out">Log Out</string>
     <string name="description">description</string>
+    <string name="ok">OK</string>
+    <string name="welcome">Welcome</string>
+    <string name="assignments">Assignments</string>
+    <string name="books_pdf">Books</string>
 </resources>
