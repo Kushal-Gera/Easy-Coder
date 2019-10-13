@@ -1,17 +1,7 @@
 package com.example.easycoder;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,12 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,16 +35,14 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
-//    some Constants
+    //    some Constants
     public static final String BOOKS = "books";
     public static final String NAME = "name";
     public static final String LINK = "link";
     public static final String IS_VIDEO = "is_video";
-
     public static boolean LIST = false;
 
-//again firebase stuff
-//    FirebaseAuth auth;
+    //again firebase stuff
     FirebaseDatabase database;
     DatabaseReference ref;
     FirebaseRecyclerOptions<pdf_model> options;
@@ -72,12 +65,6 @@ public class HomeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference(BOOKS);
 
-//        auth = FirebaseAuth.getInstance();
-//        if (auth.getCurrentUser() == null){
-//            finish();
-//            startActivity(new Intent(this, MainActivity.class));
-//        }
-
         StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -96,42 +83,43 @@ public class HomeActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull final pdf_viewholder holder, int i, @NonNull pdf_model model) {
                 String book_ref = getRef(i).getKey();
 
-                if (book_ref != null){
+                if (book_ref != null) {
                     ref.child(book_ref).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
 
-                                if (dataSnapshot.hasChild(IS_VIDEO) &&
-                                        String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("0"))
-                                    holder.img.setImageDrawable(getDrawable(R.drawable.video));
-                                else if (dataSnapshot.hasChild(IS_VIDEO) &&
-                                        String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("1"))
-                                    holder.img.setImageDrawable(getDrawable(R.drawable.assignment));
-                                else
-                                    holder.img.setImageDrawable(getDrawable(R.drawable.book));
+                            if (dataSnapshot.hasChild(IS_VIDEO) &&
+                                    String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("0"))
+                                holder.img.setImageDrawable(getDrawable(R.drawable.video));
+                            else if (dataSnapshot.hasChild(IS_VIDEO) &&
+                                    String.valueOf(dataSnapshot.child(IS_VIDEO).getValue()).equals("1"))
+                                holder.img.setImageDrawable(getDrawable(R.drawable.assignment));
+                            else
+                                holder.img.setImageDrawable(getDrawable(R.drawable.book));
 
                             holder.name.setText(String.valueOf(dataSnapshot.child(NAME).getValue()));
-                                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        //take to download link / or download pdf
-                                        String link = String.valueOf(dataSnapshot.child(LINK).getValue() );
-                                        try{
-                                            startActivity(new Intent( Intent.ACTION_VIEW, Uri.parse(link) ));
-                                        }catch (Exception e){
-                                            e.printStackTrace();
-                                            Log.e(TAG, "onClick: Error" + e.getMessage() );
-                                            Toast.makeText(HomeActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
-                                        }
-
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    //take to download link / or download pdf
+                                    String link = String.valueOf(dataSnapshot.child(LINK).getValue());
+                                    try {
+                                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        Log.e(TAG, "onClick: Error" + e.getMessage());
+                                        Toast.makeText(HomeActivity.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                                     }
-                                });
-                                pd.dismiss();
+
+                                }
+                            });
+                            pd.dismiss();
 
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Log.e(TAG, "onCancelled: due to some error " + databaseError.getMessage() );
+                            Log.e(TAG, "onCancelled: due to some error " + databaseError.getMessage());
                         }
                     });
                 }
@@ -177,19 +165,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-//        if (item.getItemId() == R.id.logout){
-//            //converge all this to a function and include a dialog box
-//            logout();
-//
-//        }
-
-        if (item.getItemId() == R.id.dashboard){
-            if(LIST){
+        if (item.getItemId() == R.id.dashboard) {
+            if (LIST) {
                 item.setIcon(getDrawable(R.drawable.dashboard));
                 StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(gridLayoutManager);
-            }
-            else {
+            } else {
                 item.setIcon(getDrawable(R.drawable.dashboard_plain));
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
             }
@@ -199,32 +180,9 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-//    private void logout(){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setMessage("Do You Really Want To Sign Out ?")
-//                .setCancelable(true)
-//                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        auth.signOut();
-//                        finish();
-//                        startActivity(new Intent(HomeActivity.this, MainActivity.class));
-//                    }
-//                })
-//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        //none
-//                    }
-//                });
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//    }
+    private void generateData(final int x) {
 
-    private void generateData(final int x){
-
-        for (int i = 51; i< 52; i++){
+        for (int i = 51; i < 52; i++) {
 //            locale.english is totally optional for now.....
             String str = String.format(Locale.ENGLISH, "book%d", i);
 
@@ -235,9 +193,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 
 
 }

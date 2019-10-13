@@ -7,14 +7,7 @@
         android:id="@+id/dashboard"
         android:icon="@drawable/dashboard"
         android:title="@string/log_out"
-        app:showAsAction="always"/>
-
-    <item
-        android:visible="false"
-        android:id="@+id/logout"
-        android:icon="@drawable/logout"
-        android:title="@string/log_out"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 
 </menu>
