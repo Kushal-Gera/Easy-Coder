@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/mainImg"
-        android:layout_marginTop="-15dp"
         android:layout_width="match_parent"
         android:layout_height="420dp"
+        android:layout_marginTop="-15dp"
+        android:contentDescription="@string/description"
         android:scaleType="centerCrop"
-        android:src="@drawable/main_img"
-        android:contentDescription="@string/description" />
+        android:src="@drawable/main_img" />
 
     <ImageView
         android:id="@+id/logo"
@@ -23,8 +23,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:contentDescription="@string/description" />
+        android:contentDescription="@string/description"
+        android:src="@mipmap/ic_launcher_round" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical">
@@ -57,8 +57,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
-                    android:src="@drawable/email"
-                    android:contentDescription="@string/description" />
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/email" />
 
                 <EditText
                     android:id="@+id/email"
@@ -66,14 +66,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     android:focusedByDefault="false"
                     android:hint="@string/email"
+                    android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/lightWhite"
                     android:textSize="20sp"
-                    android:importantForAutofill="no"
                     tools:targetApi="o" />
 
             </LinearLayout>
@@ -85,12 +87,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:contentDescription="@string/description"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
+                    android:contentDescription="@string/description"
                     android:src="@drawable/password" />
 
                 <EditText
@@ -99,14 +101,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginBottom="4dp"
                     android:focusedByDefault="false"
                     android:hint="@string/password"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/lightWhite"
                     android:textSize="20sp"
-                    tools:targetApi="o"
-                    android:importantForAutofill="no" />
+                    tools:targetApi="o" />
 
                 <ImageButton
                     android:id="@+id/eye"
@@ -115,8 +119,9 @@
                     android:layout_marginStart="-10dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="4dp"
-                    android:src="@drawable/eye"
-                    android:contentDescription="@string/description" />
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/eye" />
 
             </LinearLayout>
 
@@ -139,7 +144,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/btn2bg"
                 android:text="@string/login"
-                android:textColor="#985EFF"
+                android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 tools:ignore="ButtonStyle" />
 

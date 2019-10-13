@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     public static boolean LIST = false;
 
 //again firebase stuff
-    FirebaseAuth auth;
+//    FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference ref;
     FirebaseRecyclerOptions<pdf_model> options;
@@ -69,14 +69,14 @@ public class HomeActivity extends AppCompatActivity {
         pd.show();
 
         recyclerView = findViewById(R.id.recyclerView);
-        auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference(BOOKS);
 
-        if (auth.getCurrentUser() == null){
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        }
+//        auth = FirebaseAuth.getInstance();
+//        if (auth.getCurrentUser() == null){
+//            finish();
+//            startActivity(new Intent(this, MainActivity.class));
+//        }
 
         StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
@@ -151,7 +151,7 @@ public class HomeActivity extends AppCompatActivity {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
 
-//        dialog at the welocome screen
+//        dialog at the welcome screen
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog);
         dialog.setCancelable(false);
@@ -177,11 +177,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.logout){
-            //converge all this to a function and include a dialog box
-            logout();
+//        if (item.getItemId() == R.id.logout){
+//            //converge all this to a function and include a dialog box
+//            logout();
+//
+//        }
 
-        }
         if (item.getItemId() == R.id.dashboard){
             if(LIST){
                 item.setIcon(getDrawable(R.drawable.dashboard));
@@ -198,28 +199,28 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-    private void logout(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do You Really Want To Sign Out ?")
-                .setCancelable(true)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        auth.signOut();
-                        finish();
-                        startActivity(new Intent(HomeActivity.this, MainActivity.class));
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //none
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
+//    private void logout(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setMessage("Do You Really Want To Sign Out ?")
+//                .setCancelable(true)
+//                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        auth.signOut();
+//                        finish();
+//                        startActivity(new Intent(HomeActivity.this, MainActivity.class));
+//                    }
+//                })
+//                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        //none
+//                    }
+//                });
+//
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//    }
 
     private void generateData(final int x){
 

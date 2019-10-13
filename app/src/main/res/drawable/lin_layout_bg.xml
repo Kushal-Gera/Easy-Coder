@@ -6,7 +6,7 @@
     </corners>
 
     <solid
-        android:color="#FFF">
+        android:color="@color/colorPrimaryDark">
     </solid>
 
 </shape>

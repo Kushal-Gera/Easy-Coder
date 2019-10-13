@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#BB86FC</color>
-    <color name="colorPrimaryDark">#1f1f1f</color>
-    <color name="colorAccent">#03DAC6</color>
+    <color name="colorPrimaryDark">#252525</color>
+    <color name="colorAccent">#D78550</color>
 
-    <color name="colorOrange">#E79560</color>
+<!--    <color name="colorOrange">#E79560</color>-->
+<!--    <color name="teel_green">#03DAC6</color>-->
+
     <color name="colorBlue">#29B6F6</color>
-    <color name="colorTransparent">#DBB2FF</color>
-    <color name="colorBlack">#000</color>
+    <color name="green_pastel">#9CCC65</color>
 
     <color name="white">#fff</color>
     <color name="lightWhite">#ddd</color>
-    <color name="green_pastel">#9CCC65</color>
+    <color name="colorBlack">#000</color>
+
 </resources>
